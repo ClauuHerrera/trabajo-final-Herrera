@@ -91,6 +91,7 @@ footer {
 }
 .compra:hover {
     opacity: 0.7;
+    color: rgba(157, 133, 13, 0.153)
     
 }
 .fa-solid {

@@ -1,156 +1,70 @@
 
-const ropa = [
 
-    {
-        id: 1,
-        nombre: "conjunto negro",
-        tipo: "con encaje",
-        precio: 800,
-        imagen: "../assens/img/primero.png",
-        stock: "30 uni",
-
-    },
-
-
-    {
-        id: 2,
-        nombre: "brasier",
-        tipo: "con encaje",
-        precio: 600,
-        imagen: "../assens/img/conjuntorojo.png",
-        stock: "20 uni",
-    },
-
-    {
-        id: 3,
-        nombre: "conjunto blanco",
-        tipo: "clasico",
-        precio: 700,
-        imagen: "../assens/img/conjuntoblanco.png",
-        stock: "15 uni",
-    },
-    {
-        id: 4,
-        nombre: "conjunto kaury",
-        tipo: "corpiño con tiras, comodo al uso",
-        precio: 900,
-        imagen: "../assens/img/corpiño y colaless.png",
-        stock: "10 uni",
-    },
-    {
-        id: 5,
-        nombre: "Ropa interior",
-        tipo: "tanga de encaje",
-        precio: 600,
-        imagen: "../assens/img/ropainterior.png",
-        stock: "-",
-    },
-    {
-        id: 6,
-        nombre: "ropa interior con hebilla de mujer",
-        tipo: "conjunto de sujetador de encaje fino",
-        precio: 1100,
-        imagen: "../assens/img/conjuntonegro.png",
-        stock: "-",
-    },
-    {
-        id: 7,
-        nombre: "conjunto (color) negro",
-        tipo: "sujetador fino sin hebilla",
-        precio: 1500,
-        imagen: "../assens/img/conjunto negro con encaje.png",
-        stock: "-",
-    },
-    {
-        id: 8,
-        nombre: "bombachas clasicas",
-        tipo: "de algodon con encaje",
-        precio: 800,
-        imagen: "../assens/img/bombachaconencaje.png",
-        stock: "-",
-    },
-    {
-        id: 9,
-        nombre: "pijama",
-        tipo: "de algodon",
-        precio: 100,
-        imagen: "../assens/img/pijama.png",
-        stock: "-",
-    },
-    {
-        id: 10,
-        nombre: "ropa interior",
-        tipo: "de seda sin costura",
-        precio: 800,
-        imagen: "../assens/img/bombachones.png",
-        stock: "-",
-    },
-    {
-        id: 11,
-        nombre: "sevanda",
-        tipo: "vestido negro con encaje ajustable",
-        precio: 2500,
-        imagen: "../assens/img/sevanda-ropainterior.png",
-        stock: "14 uni",
-    },
-    {
-        id: 12,
-        nombre: "vestido de lenceria",
-        tipo: "de alta calidad,con encaje,noche,novedad",
-        precio: 1900,
-        imagen: "../assens/img/vestidoencajenoche.png",
-        stock: "-",
-    },
-
-]
 
 let carrito = []
 
-let contenedor = document.getElementById("contenedorlenceria");
+let contenedorprincipal = document.getElementById("contenedorlenceria");
 
 
-ropa.forEach((productotienda) => {
-
-    let contenedor = document.createElement("div")
-
-    contenedor.innerHTML = `
+   
+      const pedirpost = async () => {
+      const resp = await fetch("productos.json");
+      const data = await resp.json()
+      console.log(data);
     
-    <div class="col">
-    <div class="card">
-        <img src="${productotienda.imagen}" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">${productotienda.nombre}</h5>
-            <p class="card-text">${productotienda.tipo}</p>
-            <p> $ ${productotienda.precio}</p>
-            <p>Consulte talles</p>
-            <p>${productotienda.stock}</p>
+
+      data.forEach((productotienda) => {
+        let contenedor = document.createElement("div")
+
+        contenedor.innerHTML = `
+        
+        <div class="col">
+        <div class="card">
+            <img src="${productotienda.imagen}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">${productotienda.nombre}</h5>
+                <p class="card-text">${productotienda.tipo}</p>
+                <p> $ ${productotienda.precio}</p>
+                <p>Consulte talles</p>
+                <p>${productotienda.stock}</p>
+            </div>
         </div>
     </div>
-</div>
-     
-    `
-    contenedorlenceria.append(contenedor)
+         
+        `
+        contenedorprincipal.append(contenedor);
 
+ //boton de comprar 
+        
+            let comprar = document.createElement("button")
+            comprar.innerText = "comprar";
+            comprar.className = "comprar";
+        
+            contenedorprincipal.append(comprar)
+        
+            comprar.addEventListener("click", () => {
+               carrito.push({
+                id : productotienda.id,
+                nombre : productotienda.nombre,
+                tipo : productotienda.tipo,
+                precio : productotienda.precio,
+                imagen : productotienda.imagen,
+                stock : productotienda.stock,
+               })
+               console.log(carrito)
+            });
+        
+        });
+        
 
-    let comprar = document.createElement("button")
-    comprar.innerText = "comprar";
-    comprar.className = "comprar";
+ };
 
-    contenedor.append(comprar)
+pedirpost()
+   
 
-    comprar.addEventListener("click", () => {
-       carrito.push({
-        id : productotienda.id,
-        nombre : productotienda.nombre,
-        tipo : productotienda.tipo,
-        precio : productotienda.precio,
-        imagen : productotienda.imagen,
-        stock : productotienda.stock,
-       })
-       console.log(carrito)
-    })
+   
 
-});
+//icono carrito
 
 let vercarrito = document.getElementById("vercarrito");
 
@@ -170,6 +84,8 @@ vercarrito.addEventListener("click", () => {
     `;
 
     modalcontainer.append(modalheader);
+
+
 
 
 
@@ -214,7 +130,17 @@ vercarrito.addEventListener("click", () => {
 
     botoncomprar.addEventListener("click", ()=> {
     
-        alert("gracias por tu compra")
+        Swal.fire({
+            title: 'Gracias por tu compra! esperamos volver a verte por aca',
+            width: 600,
+            padding: '20px',
+            color: '#121212',
+            background: '#bdb76b',
+            backdrop: `
+              rgba(157, 133, 13, 0.153)
+             
+            `
+          })
       
     })
 
@@ -227,18 +153,23 @@ vercarrito.addEventListener("click", () => {
   
 
 
-
-
-const guardarlocal = (clave,valor) => {
-    localStorage.setItem(clave,valor)
-};
-
-for (const producto of ropa){
-    guardarlocal(producto.id , JSON.stringify (producto));
-}
-console.log(ropa)
-
-let recuperadolocal = JSON.parse(localStorage.getItem("ropa"));
-
-console.log(ropa)
-
+//localstorage//
+  
+const guardarLocal = (clave, valor) => {
+    localStorage.setItem(clave, valor);
+  };
+  
+  data.forEach((producto) => {
+    guardarLocal(producto.id, JSON.stringify(producto));
+  });
+  console.log(data);
+  
+  let recuperadoLocal = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const clave = localStorage.key(i);
+    const valor = JSON.parse(localStorage.getItem(clave));
+    recuperadoLocal.push(valor);
+  }
+  
+  console.log(recuperadoLocal);
+  

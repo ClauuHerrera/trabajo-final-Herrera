@@ -1,0 +1,102 @@
+ 
+ 
+ [
+
+    {
+        "id": 1,
+        "nombre": "conjunto negro",
+        "tipo": "con encaje",
+        "precio": 800,
+        "imagen": "../assens/img/primero.png",
+        "stock": "30 uni"
+    },
+    {
+        "id": 2,
+        "nombre": "brasier",
+        "tipo" : "con encaje",
+        "precio": 600,
+        "imagen": "../assens/img/conjuntorojo.png",
+        "stock": "20 uni"
+    },
+    {
+        "id": 3,
+        "nombre": "conjunto blanco",
+        "tipo": "clasico",
+        "precio": 700,
+        "imagen": "../assens/img/conjuntoblanco.png",
+        "stock": "15 uni"
+    },
+    {
+        "id": 4,
+        "nombre": "conjunto kaury",
+        "tipo": "corpiño con tiras, comodo al uso",
+        "precio": 900,
+        "imagen": "../assens/img/corpiño y colaless.png",
+        "stock": "10 uni"
+    },
+    {
+        "id": 5,
+        "nombre": "Ropa interior",
+        "tipo": "tanga de encaje",
+        "precio": 600,
+        "imagen": "../assens/img/ropainterior.png",
+        "stock": "-"
+    },
+    {
+        "id": 6,
+        "nombre": "ropa interior con hebilla de mujer",
+        "tipo": "conjunto de sujetador de encaje fino",
+        "precio": 1100,
+        "imagen": "../assens/img/conjuntonegro.png",
+        "stock": "-"
+    },
+    {
+        "id": 7,
+        "nombre": "conjunto (color) negro",
+        "tipo": "sujetador fino sin hebilla",
+        "precio": 1500,
+        "imagen": "../assens/img/conjunto negro con encaje.png",
+        "stock": "-"
+    },
+    {
+        "id": 8,
+        "nombre": "bombachas clasicas",
+        "tipo": "de algodon con encaje",
+        "precio": 800,
+        "imagen": "../assens/img/bombachaconencaje.png",
+        "stock": "-"
+    },
+    {
+        "id": 9,
+        "nombre": "pijama",
+        "tipo": "de algodon",
+        "precio": 100,
+        "imagen": "../assens/img/pijama.png",
+        "stock": "-"
+    },
+    {
+        "id": 10,
+        "nombre": "ropa interior",
+        "tipo": "de seda sin costura",
+        "precio": 800,
+        "imagen": "../assens/img/bombachones.png",
+        "stock": "-"
+    },
+    {
+        "id": 11,
+        "nombre": "sevanda",
+        "tipo": "vestido negro con encaje ajustable",
+        "precio": 2500,
+        "imagen": "../assens/img/sevanda-ropainterior.png",
+        "stock": "14 uni"
+    },
+    {
+        "id": 12,
+        "nombre": "vestido de lenceria",
+        "tipo": "de alta calidad,con encaje,noche,novedad",
+        "precio": 1900,
+        "imagen": "../assens/img/vestidoencajenoche.png",
+        "stock": "-"
+    }
+
+]
